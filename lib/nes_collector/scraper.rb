@@ -2,7 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'pry'
 
-class Scraper
+class NesCollector::Scraper
 
   def self.scrape_page
     doc = Nokogiri::HTML(open("https://www.pricecharting.com/console/nes"))
@@ -15,4 +15,4 @@ class Scraper
 
 end
 
-Scraper.scrape_page
+NesCollector::Scraper.scrape_page

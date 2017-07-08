@@ -1,4 +1,4 @@
-class Game
+class NesCollector::Game
   attr_accessor :name, :loose_price, :cib_price, :new_price
 
   @@all = []
