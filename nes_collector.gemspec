@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["'Sarah Cyr'"]
   spec.email         = ["'sarahcyrdesign@gmail.com'"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Nintendo NES game collector}
+  spec.description   = %q{Pricing information of Nintendo's NES game library for collectors.}
+  spec.homepage      = "https://github.com/SarahCyrDesign/nes-collector-cli-gem"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
