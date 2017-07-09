@@ -2,17 +2,27 @@ require 'nokogiri'
 require 'open-uri'
 require 'pry'
 
-class NesCollector::Scraper
+class Scraper
 
   def self.scrape_page
-    doc = Nokogiri::HTML(open("https://www.pricecharting.com/console/nes"))
-    name = doc.css("td.title").first.text #Super Mario 3
-    doc.css("td.price.numeric.used_price").first.text #$10.50
-    doc.css("td.price.numeric.cib_price").first.text #$27.06
-    doc.css("td.price.numeric.new_price").first.text #$200.00
-  # binding.pry
+  doc = Nokogiri::HTML(open("https://www.pricecharting.com/console/nes"))
   end
 
-end
+   def self.make_games
+     binding.pry
 
-NesCollector::Scraper.scrape_page
+     doc = self.scrape_page
+     doc.css("td").each do |game|
+     game = NesCollector::Game.new
+     game.name = doc.css("td.title").text
+     game.loose_price = doc.css("td.price.numeric.used_price").text
+     game.cib_price = doc.css("td.price.numeric.cib_price").text
+     game.new_price = doc.css("td.price.numeric.new_price").text
+     game.save
+     puts "#{game.name}"
+     end
+   end
+
+end
+Scraper.scrape_page
+Scraper.make_games
