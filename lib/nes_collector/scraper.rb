@@ -13,9 +13,9 @@ class Scraper
      doc = self.scrape_page
      doc.css("td").each do |game|
        game.name = doc.css("td.title").text
-       game.loose_price = doc.css("td.price.numeric.used_price").text
-       game.cib_price = doc.css("td.price.numeric.cib_price").text
-       game.new_price = doc.css("td.price.numeric.new_price").text
+      #  game.loose_price = doc.css("td.price.numeric.used_price").text
+      #  game.cib_price = doc.css("td.price.numeric.cib_price").text
+      #  game.new_price = doc.css("td.price.numeric.new_price").text
      end
    end
 
