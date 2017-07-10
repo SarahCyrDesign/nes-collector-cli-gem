@@ -9,17 +9,13 @@ class Scraper
   end
 
    def self.make_games
-     binding.pry
 
      doc = self.scrape_page
      doc.css("td").each do |game|
-     game = NesCollector::Game.new
-     game.name = doc.css("td.title").text
-     game.loose_price = doc.css("td.price.numeric.used_price").text
-     game.cib_price = doc.css("td.price.numeric.cib_price").text
-     game.new_price = doc.css("td.price.numeric.new_price").text
-     game.save
-     puts "#{game.name}"
+       game.name = doc.css("td.title").text
+       game.loose_price = doc.css("td.price.numeric.used_price").text
+       game.cib_price = doc.css("td.price.numeric.cib_price").text
+       game.new_price = doc.css("td.price.numeric.new_price").text
      end
    end
 
