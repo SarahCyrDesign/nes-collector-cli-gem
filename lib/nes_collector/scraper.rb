@@ -5,20 +5,22 @@ require 'pry'
 class Scraper
 
   def self.scrape_page
-  doc = Nokogiri::HTML(open("https://www.pricecharting.com/console/nes"))
+    doc = Nokogiri::HTML(open("https://www.pricecharting.com/console/nes"))
+  end
+
+  def self.scrape_table
+  self.scrape_page.css("td")
   end
 
    def self.make_games
-
-     doc = self.scrape_page
-     doc.css("td").each do |game|
-       game.name = doc.css("td.title").text
-      #  game.loose_price = doc.css("td.price.numeric.used_price").text
-      #  game.cib_price = doc.css("td.price.numeric.cib_price").text
-      #  game.new_price = doc.css("td.price.numeric.new_price").text
+     self.scrape_table.each do |doc|
+     NesCollector::Game.new_from_file(doc)
+     binding.pry
      end
    end
-
 end
+
+
 Scraper.scrape_page
+Scraper.scrape_table
 Scraper.make_games

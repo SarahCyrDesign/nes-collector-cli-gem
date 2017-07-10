@@ -5,6 +5,15 @@ class NesCollector::Game
 
   @@all = []
 
+  def self.new_from_file(doc)
+   self.new(
+   doc.css("td.title").text,
+   doc.css("td.price.numeric.used_price").text,
+   doc.css("td.price.numeric.cib_price").text,
+   doc.css("td.price.numeric.new_price").text
+   )
+  end
+
   def initialize(name = nil, loose_price = nil, cib_price = nil, new_price = nil)
     @name = name
     @loose_price = loose_price
@@ -17,3 +26,13 @@ class NesCollector::Game
     @@all
   end
 end
+
+def self.find(id)
+   self.all[id-1]
+ end
+
+#scraping data saved here
+# game.name = doc.css("td.title").text
+# game.loose_price = doc.css("td.price.numeric.used_price").text
+# game.cib_price = doc.css("td.price.numeric.cib_price").text
+# game.new_price = doc.css("td.price.numeric.new_price").text

@@ -1,29 +1,11 @@
 class NesCollector::CLI
 
   def call
-    #Scraper.scrape_page  LOGIC FOR LATER
-    #Scraper.make_games  LOGIC FOR LATER
-    #get_games LOGIC FOR LATER
+    #Scraper.new.make_games  LOGIC FOR LATER
     list_games
     menu
   end
 
-  # def get_games
-  #   @games = NesCollector::Game.all
-  # end
-
-  def list_games
-    puts "Nintendo's NES Games:"
-    puts <<-DOC
-  1. Super Mario Bros 3
-  2. Legend of Zelda
-  DOC
-  #    @games.each.with_index(1) do |game, index|
-  #      puts "#{i}. #{name.title}"
-  #    end
-  #    puts "----------------------------"
-  #  end
-  end
 
   def menu
         puts "Enter the number of the game you want to see the values of"
@@ -31,7 +13,10 @@ class NesCollector::CLI
         input = nil
       while input != "exit"
         input = gets.strip.downcase
-     if input.to_i.between?(1, 15) #PLACEHOLDER for LOGIC
+        game = NesCollector::Game.find(input.to_i)
+
+     if input.to_i.between?(1, 15) #input.to_i.between?(1, NesCollector::Game.all.size)
+       # print_game_info(game)
        puts "Game Title"
        puts "loose $10.50"
        puts "CIB $27.06"
@@ -47,4 +32,24 @@ class NesCollector::CLI
     end
   end
 
+  def list_games
+    puts "Nintendo's NES Games:"
+    puts <<-DOC
+  1. Super Mario Bros 3
+  2. Legend of Zelda
+  DOC
+
+  #   NesCollector::Game.all.each.with_index(1).do |game, index|
+        # puts "#{index}. #{game}"
+  end
+
+
+    # def print_game_info(game)
+        # puts "---------------------------------"
+        # puts "name:         #{game.name}"
+        # puts "Loose Price:  #{game.loose_price}"
+        # puts "In Box Price: #{game.cib_price}"
+        # puts "New Price:    #{game.new_price}"
+        # puts "---------------------------------"
+    # end
 end
