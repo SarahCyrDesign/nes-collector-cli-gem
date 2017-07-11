@@ -1,4 +1,4 @@
-class NesCollector::CLI
+class CLI
 
   def call
     #Scraper.new.make_games  LOGIC FOR LATER
@@ -13,7 +13,7 @@ class NesCollector::CLI
         input = nil
       while input != "exit"
         input = gets.strip.downcase
-        game = NesCollector::Game.find(input.to_i)
+        game = Game.find(input.to_i)
 
      if input.to_i.between?(1, 15) #input.to_i.between?(1, NesCollector::Game.all.size)
        # print_game_info(game)

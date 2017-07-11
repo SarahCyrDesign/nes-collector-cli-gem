@@ -1,16 +1,16 @@
 require 'pry'
 
-class NesCollector::Game
+class Game
   attr_accessor :name, :loose_price, :cib_price, :new_price
 
   @@all = []
 
   def self.new_from_file(doc)
    self.new(
-   doc.css("td.title").text,
-   doc.css("td.price.numeric.used_price").text,
-   doc.css("td.price.numeric.cib_price").text,
-   doc.css("td.price.numeric.new_price").text
+     doc.css("td.title").text,
+     doc.css("td.price.numeric.used_price").text,
+     doc.css("td.price.numeric.cib_price").text,
+     doc.css("td.price.numeric.new_price").text
    )
   end
 

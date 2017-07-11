@@ -1,6 +1,3 @@
-require 'nokogiri'
-require 'open-uri'
-require 'pry'
 
 class Scraper
 
@@ -9,13 +6,12 @@ class Scraper
   end
 
   def self.scrape_table
-  self.scrape_page.css("td")
+    self.scrape_page.css("td")
   end
 
    def self.make_games
      self.scrape_table.each do |doc|
-     NesCollector::Game.new_from_file(doc)
-     binding.pry
+       Game.new_from_file(doc)
      end
    end
 end
