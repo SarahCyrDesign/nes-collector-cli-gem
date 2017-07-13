@@ -24,12 +24,12 @@ class Game
 
   def self.all
     @@all
-  end
 end
 
 def self.find(id)
    self.all[id-1]
  end
+end
 
 #scraping data saved here
 # game.name = doc.css("td.title").text
