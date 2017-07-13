@@ -31,14 +31,8 @@ class CLI
   end
 
   def list_games
-  #   puts "Nintendo's NES Games:"
-  #   puts <<-DOC
-  # 1. Super Mario Bros 3
-  # 2. Legend of Zelda
-  # DOC
-
   Game.all.each.with_index(1) do |game, index|
-    puts "#{index}. #{game}"
+    puts "#{index}. #{game.name}"
   end
 end
 

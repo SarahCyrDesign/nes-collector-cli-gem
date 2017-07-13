@@ -6,7 +6,8 @@ class Scraper
   end
 
   def scrape_table
-    self.scrape_page.css("td")
+
+    self.scrape_page.css("#games_table tr")
   end
 
    def make_games
