@@ -6,13 +6,15 @@ class Game
   @@all = []
 
   def self.new_from_file(doc)
+   if doc.css("td.title").text != ""
    self.new(
-     doc.css("td.title").text,
+     doc.css("td.title").text.strip,
      doc.css("td.price.numeric.used_price").text,
      doc.css("td.price.numeric.cib_price").text,
      doc.css("td.price.numeric.new_price").text
    )
   end
+end
 
   def initialize(name = nil, loose_price = nil, cib_price = nil, new_price = nil)
     @name = name
@@ -25,11 +27,11 @@ class Game
   def self.all
     @@all
   end
-end
 
-def self.find(id)
+  def self.find(id)
    self.all[id-1]
- end
+   end
+  end
 
 #scraping data saved here
 # game.name = doc.css("td.title").text
