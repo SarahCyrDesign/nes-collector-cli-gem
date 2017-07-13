@@ -32,9 +32,3 @@ end
    self.all[id-1]
    end
   end
-
-#scraping data saved here
-# game.name = doc.css("td.title").text
-# game.loose_price = doc.css("td.price.numeric.used_price").text
-# game.cib_price = doc.css("td.price.numeric.cib_price").text
-# game.new_price = doc.css("td.price.numeric.new_price").text
