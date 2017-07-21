@@ -37,6 +37,7 @@ class CLI
   end
 
   def list_games
+    puts "The average of all the new price games is #{Game.avg_new_price}"
   Game.all.each.with_index(1) do |game, index|
     puts "#{index}. #{game.name}"
   end

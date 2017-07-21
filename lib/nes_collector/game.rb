@@ -5,17 +5,6 @@ class Game
 
   @@all = []
 
-  def self.new_from_file(doc)
-   if doc.css("td.title").text != ""
-   self.new(
-     doc.css("td.title").text.strip,
-     doc.css("td.price.numeric.used_price").text,
-     doc.css("td.price.numeric.cib_price").text,
-     doc.css("td.price.numeric.new_price").text
-   )
-  end
-end
-
   def initialize(name = nil, loose_price = nil, cib_price = nil, new_price = nil)
     @name = name
     @loose_price = loose_price
@@ -31,4 +20,13 @@ end
   def self.find(id)
    self.all[id-1]
    end
+
+   def self.avg_new_price
+     total = 0
+     Game.all.each do |game|
+       total += game.new_price.gsub("$", "").to_f
+     end
+     total / Game.all.length
+   end
   end
+  # add all numbers and divide by length
